@@ -1,9 +1,7 @@
+using RecipeManagement.Contracts.Ingredients;
+
 namespace RecipeManagement.Domain.Ingredients.Features;
 
-using RecipeManagement.Domain.Ingredients;
-using RecipeManagement.Domain.Ingredients.Dtos;
-using SharedKernel.Exceptions;
-using RecipeManagement.Domain.Ingredients.Validators;
 using RecipeManagement.Domain.Ingredients.Services;
 using RecipeManagement.Services;
 using AutoMapper;

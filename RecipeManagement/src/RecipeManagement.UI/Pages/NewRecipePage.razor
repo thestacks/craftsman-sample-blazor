@@ -1,0 +1,9 @@
+@attribute [Route(FrontendRoutes.Recipes.New)]
+
+<PageTitle>New recipe</PageTitle>
+
+<RadzenCard>
+    <NavigateButton Path="@FrontendRoutes.Recipes.Index"/>
+    <h3>New recipe</h3>
+    <RecipeForm/>
+</RadzenCard>

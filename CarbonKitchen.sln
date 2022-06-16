@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeManagement.SharedTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeManagement.UnitTests", "RecipeManagement\tests\RecipeManagement.UnitTests\RecipeManagement.UnitTests.csproj", "{26EA7D81-CDCC-4547-8D04-5C2A94CE12F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeManagement.UI", "RecipeManagement\src\RecipeManagement.UI\RecipeManagement.UI.csproj", "{90C1FAE8-9B37-41D2-AAB2-A1AFD86A9272}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeManagement.Contracts", "RecipeManagement\src\RecipeManagement.Contracts\RecipeManagement.Contracts.csproj", "{8BCF29E7-5EF4-4ED6-B76E-8F8FE43365C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +58,14 @@ Global
 		{26EA7D81-CDCC-4547-8D04-5C2A94CE12F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26EA7D81-CDCC-4547-8D04-5C2A94CE12F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26EA7D81-CDCC-4547-8D04-5C2A94CE12F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90C1FAE8-9B37-41D2-AAB2-A1AFD86A9272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C1FAE8-9B37-41D2-AAB2-A1AFD86A9272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C1FAE8-9B37-41D2-AAB2-A1AFD86A9272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C1FAE8-9B37-41D2-AAB2-A1AFD86A9272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BCF29E7-5EF4-4ED6-B76E-8F8FE43365C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BCF29E7-5EF4-4ED6-B76E-8F8FE43365C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BCF29E7-5EF4-4ED6-B76E-8F8FE43365C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BCF29E7-5EF4-4ED6-B76E-8F8FE43365C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{55B37CFF-E9B6-41D6-9531-D3C98349721D} = {81FCA87E-468D-42AE-8C24-567D4DC466C1}
@@ -63,5 +75,7 @@ Global
 		{79012772-1DDA-49DF-BD34-0F09DBB24EB2} = {F9ECD364-3EE4-4EBA-ACE3-4A78925A2571}
 		{C9716491-0258-4C63-BD27-A32E851F2146} = {F9ECD364-3EE4-4EBA-ACE3-4A78925A2571}
 		{26EA7D81-CDCC-4547-8D04-5C2A94CE12F4} = {F9ECD364-3EE4-4EBA-ACE3-4A78925A2571}
+		{90C1FAE8-9B37-41D2-AAB2-A1AFD86A9272} = {55B37CFF-E9B6-41D6-9531-D3C98349721D}
+		{8BCF29E7-5EF4-4ED6-B76E-8F8FE43365C4} = {55B37CFF-E9B6-41D6-9531-D3C98349721D}
 	EndGlobalSection
 EndGlobal

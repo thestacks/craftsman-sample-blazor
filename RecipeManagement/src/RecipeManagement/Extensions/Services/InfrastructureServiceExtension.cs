@@ -21,7 +21,7 @@ public static class ServiceRegistration
             {
                 // this makes local migrations easier to manage. feel free to refactor if desired.
                 connectionString = env.IsDevelopment() 
-                    ? "Host=localhost;Port=53977;Database=dev_recipemanagement;Username=postgres;Password=postgres"
+                    ? "Host=127.0.0.1;Port=20002;Database=dev_recipemanagement;Username=postgres;Password=postgres"
                     : throw new Exception("DB_CONNECTION_STRING environment variable is not set.");
             }
 

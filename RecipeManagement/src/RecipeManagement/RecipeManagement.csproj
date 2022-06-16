@@ -58,6 +58,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
+    <ProjectReference Include="..\RecipeManagement.Contracts\RecipeManagement.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

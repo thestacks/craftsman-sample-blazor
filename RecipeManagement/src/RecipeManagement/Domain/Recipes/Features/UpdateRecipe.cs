@@ -1,9 +1,7 @@
+using RecipeManagement.Contracts.Recipes;
+
 namespace RecipeManagement.Domain.Recipes.Features;
 
-using RecipeManagement.Domain.Recipes;
-using RecipeManagement.Domain.Recipes.Dtos;
-using SharedKernel.Exceptions;
-using RecipeManagement.Domain.Recipes.Validators;
 using RecipeManagement.Domain.Recipes.Services;
 using RecipeManagement.Services;
 using AutoMapper;

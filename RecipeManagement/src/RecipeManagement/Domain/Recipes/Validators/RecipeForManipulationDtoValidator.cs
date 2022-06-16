@@ -1,6 +1,7 @@
+using RecipeManagement.Contracts.Recipes;
+
 namespace RecipeManagement.Domain.Recipes.Validators;
 
-using RecipeManagement.Domain.Recipes.Dtos;
 using FluentValidation;
 
 public class RecipeForManipulationDtoValidator<T> : AbstractValidator<T> where T : RecipeForManipulationDto

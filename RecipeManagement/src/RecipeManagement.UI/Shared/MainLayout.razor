@@ -1,0 +1,56 @@
+﻿@inherits FluxorLayout
+
+<RadzenDialog/>
+<RadzenNotification/>
+<RadzenContextMenu/>
+<RadzenTooltip/>
+
+<RadzenLayout>
+    <RadzenHeader>
+        <ChildContent>
+            <div class="row justify-content-start align-items-center h-100">
+                <div class="col-6 d-flex align-items-center">
+                    <RadzenSidebarToggle Click="@(_ => HandleSidebarToggleClick())">
+                    </RadzenSidebarToggle>
+                    <RadzenLabel Text="Carbon Kitchen" />
+                </div>
+            </div>
+        </ChildContent>
+    </RadzenHeader>
+    <RadzenBody @ref="@body" Expande @bind-Expanded="@bodyVisible">
+        <ChildContent>
+            <RadzenContentContainer Name="main">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 px-1 py-2">
+                            @Body
+                        </div>
+                    </div>
+                </div>
+            </RadzenContentContainer>
+        </ChildContent>
+    </RadzenBody>
+    <RadzenSidebar @ref="@sidebar" @bind-Expanded="@bodyVisible">
+        <ChildContent>
+            <RadzenPanelMenu Match="NavLinkMatch.All">
+                <RadzenPanelMenuItem Text="Dashboard" Path="@FrontendRoutes.Home" Icon="home"/>
+                <RadzenPanelMenuItem Text="Recipes" Path="@FrontendRoutes.Recipes.Index" Icon="blender"/>
+                <RadzenPanelMenuItem Text="Ingredients" Path="@FrontendRoutes.Ingredients.Index" Icon="egg"/>
+            </RadzenPanelMenu>
+        </ChildContent>
+    </RadzenSidebar>
+</RadzenLayout>
+
+@code
+{
+    private RadzenSidebar sidebar;
+    private RadzenBody body;
+    private bool sidebarVisible { get; set; }
+    private bool bodyVisible { get; set; }
+    
+    private void HandleSidebarToggleClick()
+    {
+        sidebarVisible = !sidebarVisible;
+        bodyVisible = !bodyVisible;
+    }
+}

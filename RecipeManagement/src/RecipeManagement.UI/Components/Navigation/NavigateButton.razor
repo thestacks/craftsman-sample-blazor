@@ -1,0 +1,23 @@
+﻿@inherits FluxorComponent
+
+<RadzenButton 
+    ButtonType="ButtonType.Button" 
+    ButtonStyle="ButtonStyle.Primary" 
+    Icon="@Icon"
+    Click="HandleButtonClick" 
+    Text="Go back"
+    class="mb-3"/>
+
+@code
+{
+    [Parameter] public string Path { get; set; }
+
+    [Parameter]
+    public string Icon { get; set; } = "navigate_before";
+    [Inject] private IDispatcher Dispatcher { get; set; }
+
+    private void HandleButtonClick()
+    {
+        Dispatcher.Dispatch(new GoAction(Path));
+    }
+}

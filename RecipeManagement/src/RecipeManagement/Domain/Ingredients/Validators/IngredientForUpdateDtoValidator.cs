@@ -1,7 +1,6 @@
-namespace RecipeManagement.Domain.Ingredients.Validators;
+using RecipeManagement.Contracts.Ingredients;
 
-using RecipeManagement.Domain.Ingredients.Dtos;
-using FluentValidation;
+namespace RecipeManagement.Domain.Ingredients.Validators;
 
 public class IngredientForUpdateDtoValidator: IngredientForManipulationDtoValidator<IngredientForUpdateDto>
 {

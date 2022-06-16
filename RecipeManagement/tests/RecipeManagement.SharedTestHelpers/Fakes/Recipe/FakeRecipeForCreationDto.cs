@@ -1,8 +1,8 @@
+using RecipeManagement.Contracts.Recipes;
+
 namespace RecipeManagement.SharedTestHelpers.Fakes.Recipe;
 
 using AutoBogus;
-using RecipeManagement.Domain.Recipes;
-using RecipeManagement.Domain.Recipes.Dtos;
 
 // or replace 'AutoFaker' with 'Faker' along with your own rules if you don't want all fields to be auto faked
 public class FakeRecipeForCreationDto : AutoFaker<RecipeForCreationDto>

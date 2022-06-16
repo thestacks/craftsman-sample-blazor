@@ -1,0 +1,68 @@
+DomainName: CarbonKitchen
+BoundedContexts:
+  - ProjectName: RecipeManagement
+    Port: 5005
+    DbContext:
+      ContextName: RecipesDbContext
+      DatabaseName: RecipeManagement
+      Provider: postgres
+    Entities:
+      - Name: Recipe
+        Features:
+          - Type: AddRecord
+          - Type: GetRecord
+          - Type: GetList
+          - Type: UpdateRecord
+          - Type: DeleteRecord
+        Properties:
+          - Name: Title
+            Type: string
+            CanFilter: true
+            CanSort: true
+          - Name: Directions
+            Type: string
+            CanFilter: true
+            CanSort: true
+          - Name: RecipeSourceLink
+            Type: string
+            CanFilter: true
+            CanSort: true
+          - Name: Description
+            Type: string
+            CanFilter: true
+            CanSort: true
+          - Name: ImageLink
+            Type: string
+            CanFilter: true
+            CanSort: true
+      - Name: Ingredient
+        Features:
+          - Type: AddRecord
+          - Type: GetRecord
+          - Type: GetList
+          - Type: UpdateRecord
+          - Type: DeleteRecord
+        Properties:
+          - Name: RecipeId
+            Type: int?
+            CanFilter: true
+            CanSort: true
+          - Name: Name
+            Type: string
+            CanFilter: true
+            CanSort: true
+          - Name: Unit
+            Type: string
+            CanFilter: true
+            CanSort: true
+          - Name: Amount
+            Type: double?
+            CanFilter: true
+            CanSort: true
+    SwaggerConfig:
+      Title: Carbon Kitchen Recipes
+      Description: Our API uses a REST based design, leverages the JSON data format, and relies upon HTTPS for transport. We respond with meaningful HTTP response codes and if an error occurs, we include error details in the response body. API Documentation is at carbonkitchen.com/dev/docs
+      ApiContact:
+        Name: Carbon Kitchen
+        Email: devsupport@CarbonKitchen.com
+        Url: https://www.carbonkitchen.com

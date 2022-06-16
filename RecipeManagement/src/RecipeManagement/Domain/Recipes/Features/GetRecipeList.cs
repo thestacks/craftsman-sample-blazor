@@ -1,8 +1,10 @@
+using RecipeManagement.Contracts;
+using RecipeManagement.Contracts.Recipes;
+using RecipeManagement.Wrappers.Extensions;
+
 namespace RecipeManagement.Domain.Recipes.Features;
 
-using RecipeManagement.Domain.Recipes.Dtos;
 using RecipeManagement.Domain.Recipes.Services;
-using RecipeManagement.Wrappers;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
@@ -48,7 +50,7 @@ public static class GetRecipeList
             var dtoCollection = appliedCollection
                 .ProjectTo<RecipeDto>(_mapper.ConfigurationProvider);
 
-            return await PagedList<RecipeDto>.CreateAsync(dtoCollection,
+            return await dtoCollection.ToPagedListAsync(
                 request.QueryParameters.PageNumber,
                 request.QueryParameters.PageSize,
                 cancellationToken);

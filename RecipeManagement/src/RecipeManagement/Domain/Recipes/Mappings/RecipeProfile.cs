@@ -1,6 +1,7 @@
+using RecipeManagement.Contracts.Recipes;
+
 namespace RecipeManagement.Domain.Recipes.Mappings;
 
-using RecipeManagement.Domain.Recipes.Dtos;
 using AutoMapper;
 using RecipeManagement.Domain.Recipes;
 

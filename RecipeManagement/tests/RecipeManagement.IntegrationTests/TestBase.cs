@@ -5,7 +5,6 @@ using NUnit.Framework;
 using System.Threading.Tasks;
 using AutoBogus;
 using FluentAssertions.Extensions;
-using static TestFixture;
 
 public class TestBase
 {

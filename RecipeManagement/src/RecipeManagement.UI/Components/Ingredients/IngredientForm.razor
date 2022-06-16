@@ -1,0 +1,80 @@
+﻿@inherits FluxorComponent
+
+<DataLoader IsLoading="@State.Value.IsLoading">
+    <RadzenTemplateForm Data="@Model" TItem="IngredientFormModel" Submit="HandleSubmit">
+        <ChildContent>
+            <div class="row mb-3">
+                <div class="col-12 col-xl-4">
+                    <RadzenLabel Component="Name" Text="Name"/>
+                </div>
+                <div class="col-12 col-xl-8">
+                    <RadzenTextBox Name="Name" @bind-Value="@Model.Name" class="w-100"/>
+                    <RadzenRequiredValidator Component="Name" Text="Name is required"/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 col-xl-4">
+                    <RadzenLabel Component="Unit" Text="Unit"/>
+                </div>
+                <div class="col-12 col-xl-8">
+                    <RadzenTextBox Name="Unit" @bind-Value="@Model.Unit" class="w-100"/>
+                    <RadzenRequiredValidator Component="Unit" Text="Unit is required"/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 col-xl-4">
+                    <RadzenLabel Component="Amount" Text="Amount"/>
+                </div>
+                <div class="col-12 col-xl-8">
+                    <RadzenNumeric TValue="double?" Name="Amount" @bind-Value="@Model.Amount" class="w-100"/>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col">
+                    <RadzenButton ButtonType="ButtonType.Submit" ButtonStyle="ButtonStyle.Success" Icon="check" BusyText="Please wait..." IsBusy="@State.Value.IsSubmitting" Text="Submit"></RadzenButton>
+                </div>
+            </div>
+        </ChildContent>
+    </RadzenTemplateForm>
+</DataLoader>
+
+@code {
+
+    public class IngredientFormModel
+    {
+        public Guid? Id { get; set; }
+        public int? RecipeId { get; set; }
+        public string Name { get; set; }
+        public string Unit { get; set; }
+        public double? Amount { get; set; }
+    }
+
+    private IngredientFormModel Model => State.Value.Model;
+    
+    [Parameter] public string? ItemToEdit { get; set; }
+    
+    [Inject] private NotificationService NotificationService { get; set; }
+    [Inject] private IActionSubscriber ActionSubscriber { get; set; }
+    [Inject] private IDispatcher Dispatcher { get; set; }
+    [Inject] private IState<IngredientFormState> State { get; set; }
+
+    protected override void OnInitialized()
+    {
+        ActionSubscriber.SubscribeToAction<IngredientFormSubmitSucceededAction>(this, _ => Dispatcher.Dispatch(new GoAction(FrontendRoutes.Ingredients.Index)));
+        ActionSubscriber.SubscribeToAction<IngredientFormLoadDataFailedAction>(this, _ =>
+        {
+            NotificationService.Notify(NotificationSeverity.Error, "Edit unavailable", "Failed to fetch data, unable to edit entity");
+            Dispatcher.Dispatch(new GoAction(FrontendRoutes.Ingredients.Index));
+        });
+        if (string.IsNullOrEmpty(ItemToEdit))
+            Dispatcher.Dispatch(new IngredientFormInitializeAction());
+        else
+            Dispatcher.Dispatch(new IngredientFormLoadDataAction(Guid.Parse(ItemToEdit!)));
+        base.OnInitialized();
+    }
+
+    private void HandleSubmit()
+    {
+        Dispatcher.Dispatch(new IngredientFormSubmitAction(Model));
+    }
+}

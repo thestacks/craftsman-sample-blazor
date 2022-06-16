@@ -1,0 +1,100 @@
+﻿@inherits FluxorComponent
+
+<DataLoader IsLoading="@State.Value.IsLoading">
+    <RadzenTemplateForm Data="@Model" TItem="RecipeFormModel" Submit="HandleSubmit">
+        <ChildContent>
+            <div class="row mb-3">
+                <div class="col-12 col-xl-4">
+                    <RadzenLabel Component="Title" Text="Title"/>
+                </div>
+                <div class="col-12 col-xl-8">
+                    <RadzenTextBox Name="Title" @bind-Value="@Model.Title" class="w-100"/>
+                    <RadzenRequiredValidator Component="Title" Text="Title is required"/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 col-xl-4">
+                    <RadzenLabel Component="Directions" Text="Directions"/>
+                </div>
+                <div class="col-12 col-xl-8">
+                    <RadzenTextBox Name="Directions" @bind-Value="@Model.Directions" class="w-100"/>
+                    <RadzenRequiredValidator Component="Directions" Text="Directions is required"/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 col-xl-4">
+                    <RadzenLabel Component="RecipeSourceLink" Text="Recipe Source Link"/>
+                </div>
+                <div class="col-12 col-xl-8">
+                    <RadzenTextBox Name="RecipeSourceLink" @bind-Value="@Model.RecipeSourceLink" class="w-100"/>
+                    <RadzenRequiredValidator Component="RecipeSourceLink" Text="Recipe Source Link is required"/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 col-xl-4">
+                    <RadzenLabel Component="Description" Text="Description"/>
+                </div>
+                <div class="col-12 col-xl-8">
+                    <RadzenTextArea Name="Description" @bind-Value="@Model.Description" class="w-100"/>
+                    <RadzenRequiredValidator Component="Description" Text="Description is required"/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 col-xl-4">
+                    <RadzenLabel Component="ImageLink" Text="Image Link"/>
+                </div>
+                <div class="col-12 col-xl-8">
+                    <RadzenTextBox Name="ImageLink" @bind-Value="@Model.ImageLink" class="w-100"/>
+                    <RadzenRequiredValidator Component="ImageLink" Text="Image Link is required"/>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col">
+                    <RadzenButton ButtonType="ButtonType.Submit" ButtonStyle="ButtonStyle.Success" Icon="check" BusyText="Please wait..." IsBusy="@State.Value.IsSubmitting" Text="Submit"></RadzenButton>
+                </div>
+            </div>
+        </ChildContent>
+    </RadzenTemplateForm>
+</DataLoader>
+
+@code {
+
+    public class RecipeFormModel
+    {
+        public Guid? Id { get; set; }
+        public string Title { get; set; }
+        public string Directions { get; set; }
+        public string RecipeSourceLink { get; set; }
+        public string Description { get; set; }
+        public string ImageLink { get; set; }
+    }
+
+    private RecipeFormModel Model => State.Value.Model;
+    
+    [Parameter] public string? ItemToEdit { get; set; }
+    
+    [Inject] private NotificationService NotificationService { get; set; }
+    [Inject] private IActionSubscriber ActionSubscriber { get; set; }
+    [Inject] private IDispatcher Dispatcher { get; set; }
+    [Inject] private IState<RecipeFormState> State { get; set; }
+
+    protected override void OnInitialized()
+    {
+        ActionSubscriber.SubscribeToAction<RecipeFormSubmitSucceededAction>(this, _ => Dispatcher.Dispatch(new GoAction(FrontendRoutes.Recipes.Index)));
+        ActionSubscriber.SubscribeToAction<RecipeFormLoadDataFailedAction>(this, _ =>
+        {
+            NotificationService.Notify(NotificationSeverity.Error, "Edit unavailable", "Failed to fetch data, unable to edit entity");
+            Dispatcher.Dispatch(new GoAction(FrontendRoutes.Recipes.Index));
+        });
+        if (string.IsNullOrEmpty(ItemToEdit))
+            Dispatcher.Dispatch(new RecipeFormInitializeAction());
+        else
+            Dispatcher.Dispatch(new RecipeFormLoadDataAction(Guid.Parse(ItemToEdit!)));
+        base.OnInitialized();
+    }
+
+    private void HandleSubmit()
+    {
+        Dispatcher.Dispatch(new RecipeFormSubmitAction(Model));
+    }
+}

@@ -4,7 +4,7 @@
         <name>RecipeManagement</name>
     </assembly>
     <members>
-        <member name="M:RecipeManagement.Controllers.v1.IngredientsController.AddIngredient(RecipeManagement.Domain.Ingredients.Dtos.IngredientForCreationDto)">
+        <member name="M:RecipeManagement.Controllers.v1.IngredientsController.AddIngredient(RecipeManagement.Contracts.Ingredients.IngredientForCreationDto)">
             <summary>
             Creates a new Ingredient record.
             </summary>
@@ -20,7 +20,7 @@
             <response code="400">Ingredient has missing/invalid values.</response>
             <response code="500">There was an error on the server while creating the Ingredient.</response>
         </member>
-        <member name="M:RecipeManagement.Controllers.v1.IngredientsController.GetIngredients(RecipeManagement.Domain.Ingredients.Dtos.IngredientParametersDto)">
+        <member name="M:RecipeManagement.Controllers.v1.IngredientsController.GetIngredients(RecipeManagement.Contracts.Ingredients.IngredientParametersDto)">
              <summary>
              Gets a list of all Ingredients.
              </summary>
@@ -50,7 +50,7 @@
                 | `_=`     | Starts with                   |  `!_=*`   | Case-insensitive string does not Starts with |
              </remarks>
         </member>
-        <member name="M:RecipeManagement.Controllers.v1.IngredientsController.UpdateIngredient(System.Guid,RecipeManagement.Domain.Ingredients.Dtos.IngredientForUpdateDto)">
+        <member name="M:RecipeManagement.Controllers.v1.IngredientsController.UpdateIngredient(System.Guid,RecipeManagement.Contracts.Ingredients.IngredientForUpdateDto)">
             <summary>
             Updates an entire existing Ingredient.
             </summary>
@@ -66,7 +66,7 @@
             <response code="400">Ingredient has missing/invalid values.</response>
             <response code="500">There was an error on the server while creating the Ingredient.</response>
         </member>
-        <member name="M:RecipeManagement.Controllers.v1.RecipesController.AddRecipe(RecipeManagement.Domain.Recipes.Dtos.RecipeForCreationDto)">
+        <member name="M:RecipeManagement.Controllers.v1.RecipesController.AddRecipe(RecipeManagement.Contracts.Recipes.RecipeForCreationDto)">
             <summary>
             Creates a new Recipe record.
             </summary>
@@ -82,7 +82,7 @@
             <response code="400">Recipe has missing/invalid values.</response>
             <response code="500">There was an error on the server while creating the Recipe.</response>
         </member>
-        <member name="M:RecipeManagement.Controllers.v1.RecipesController.GetRecipes(RecipeManagement.Domain.Recipes.Dtos.RecipeParametersDto)">
+        <member name="M:RecipeManagement.Controllers.v1.RecipesController.GetRecipes(RecipeManagement.Contracts.Recipes.RecipeParametersDto)">
              <summary>
              Gets a list of all Recipes.
              </summary>
@@ -112,7 +112,7 @@
                 | `_=`     | Starts with                   |  `!_=*`   | Case-insensitive string does not Starts with |
              </remarks>
         </member>
-        <member name="M:RecipeManagement.Controllers.v1.RecipesController.UpdateRecipe(System.Guid,RecipeManagement.Domain.Recipes.Dtos.RecipeForUpdateDto)">
+        <member name="M:RecipeManagement.Controllers.v1.RecipesController.UpdateRecipe(System.Guid,RecipeManagement.Contracts.Recipes.RecipeForUpdateDto)">
             <summary>
             Updates an entire existing Recipe.
             </summary>

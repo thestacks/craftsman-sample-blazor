@@ -1,6 +1,5 @@
 namespace RecipeManagement.FunctionalTests.FunctionalTests.Recipes;
 
-using RecipeManagement.SharedTestHelpers.Fakes.Recipe;
 using RecipeManagement.FunctionalTests.TestUtilities;
 using FluentAssertions;
 using NUnit.Framework;

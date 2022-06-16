@@ -1,16 +1,12 @@
+ using RecipeManagement.Contracts.Recipes;
+
 namespace RecipeManagement.Domain.Recipes;
 
-using SharedKernel.Exceptions;
-using RecipeManagement.Domain.Recipes.Dtos;
 using RecipeManagement.Domain.Recipes.Mappings;
 using RecipeManagement.Domain.Recipes.Validators;
 using RecipeManagement.Domain.Recipes.DomainEvents;
 using AutoMapper;
 using FluentValidation;
-using System.Text.Json.Serialization;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.Serialization;
 using Sieve.Attributes;
 
 

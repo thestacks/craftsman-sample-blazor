@@ -1,0 +1,76 @@
+﻿@inherits FluxorComponent
+
+<RadzenDataGrid Count="@State.Value.TotalItems" Data="@State.Value.DataSet" IsLoading="@State.Value.IsLoading" LoadData="@LoadData"
+                AllowPaging="true" AllowSorting="true" PagerAlwaysVisible="true" PagerHorizontalAlign="HorizontalAlign.Right" ShowPagingSummary="true"
+                TItem="IngredientDto" Responsive="true"
+                AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
+                AllowColumnResize="true"
+                @ref="DataGrid" PageSize="@PaginationConstants.DefaultPageSize">
+    <Columns>
+        <RadzenDataGridColumn TItem="IngredientDto" Sortable="true" Property="Id" Title="Id" TextAlign="TextAlign.Center"/>
+        <RadzenDataGridColumn TItem="IngredientDto" Sortable="true" Property="Name" Title="Name" TextAlign="TextAlign.Center"/>
+        <RadzenDataGridColumn TItem="IngredientDto" Sortable="true" Property="Unit" Title="Unit" TextAlign="TextAlign.Center"/>
+        <RadzenDataGridColumn TItem="IngredientDto" Sortable="true" Property="Amount" Title="Amount" TextAlign="TextAlign.Center"/>
+        <RadzenDataGridColumn TItem="IngredientDto" Sortable="false" Title="Actions" TextAlign="TextAlign.Center">
+            <Template Context="ingredient">
+                <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Primary" Click="() => OnEdit(ingredient.Id)"/>
+                <RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Click="() => OnDelete(ingredient)"/>
+            </Template>
+        </RadzenDataGridColumn>
+    </Columns>
+</RadzenDataGrid>
+<RadzenButton class="mt-3" ButtonType="ButtonType.Button" ButtonStyle="ButtonStyle.Success" Icon="add" Text="Add new" Click="HandleAddNewButton"/>
+
+@code
+{
+    private RadzenDataGrid<IngredientDto> DataGrid;
+    [Inject] private DialogService DialogService { get; set; }
+    [Inject] private IActionSubscriber ActionSubscriber { get; set; }
+    [Inject] private IDispatcher Dispatcher { get; set; }
+    [Inject] private IState<IngredientsListState> State { get; set; }
+
+    protected override void OnInitialized()
+    {
+        ActionSubscriber.SubscribeToAction<IngredientsListDeleteSucceededAction>(this, async _ =>
+        {
+            await DataGrid.Reload();
+        });
+        base.OnInitialized();
+        LoadData(new LoadDataArgs());
+    }
+
+    private void LoadData(LoadDataArgs args)
+    {
+        Dispatcher.Dispatch(new IngredientsListLoadAction(args));
+    }
+
+    private void HandleAddNewButton()
+    {
+        Dispatcher.Dispatch(new GoAction(FrontendRoutes.Ingredients.New));
+    }
+
+    private void OnEdit(Guid id)
+    {
+        Dispatcher.Dispatch(new GoAction(FrontendRoutes.GetRouteWithParameter(FrontendRoutes.Ingredients.Edit, id)));
+
+    }
+
+    private async Task OnDelete(IngredientDto Ingredient)
+    {
+        var confirmation = await DialogService.OpenAsync("Are you sure?", ds => @<div>
+                                                                                    <p>Do you want to remove following ingredient? <br/>
+                                                                                        <b>@Ingredient.Name</b>
+                                                                                        <div class="row">
+                                                                                            <div class="col d-flex justify-content-center">
+                                                                                                <RadzenButton Text="Yes" Click="() => ds.Close(true)" class="mr-3"/>
+                                                                                                <RadzenButton ButtonStyle="ButtonStyle.Secondary" Text="No" Click="() => ds.Close(false)"/>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </p>
+                                                                                </div>);
+        if (confirmation is null or false)
+            return;
+        
+        Dispatcher.Dispatch(new IngredientsListDeleteAction(Ingredient.Id));
+    }
+}

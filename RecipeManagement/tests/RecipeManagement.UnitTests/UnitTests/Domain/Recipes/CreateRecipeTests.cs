@@ -1,7 +1,6 @@
 namespace RecipeManagement.UnitTests.UnitTests.Domain.Recipes;
 
 using RecipeManagement.SharedTestHelpers.Fakes.Recipe;
-using RecipeManagement.Domain.Recipes;
 using RecipeManagement.Domain.Recipes.DomainEvents;
 using Bogus;
 using FluentAssertions;

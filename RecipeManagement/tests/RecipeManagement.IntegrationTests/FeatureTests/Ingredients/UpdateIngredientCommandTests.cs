@@ -1,15 +1,11 @@
 namespace RecipeManagement.IntegrationTests.FeatureTests.Ingredients;
 
 using RecipeManagement.SharedTestHelpers.Fakes.Ingredient;
-using RecipeManagement.IntegrationTests.TestUtilities;
-using RecipeManagement.Domain.Ingredients.Dtos;
-using SharedKernel.Exceptions;
 using RecipeManagement.Domain.Ingredients.Features;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.JsonPatch;
 using static TestFixture;
 
 public class UpdateIngredientCommandTests : TestBase

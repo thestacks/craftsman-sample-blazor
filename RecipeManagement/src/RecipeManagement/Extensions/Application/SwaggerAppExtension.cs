@@ -1,9 +1,7 @@
 namespace RecipeManagement.Extensions.Application;
 
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using RecipeManagement.Middleware;
 
 public static class SwaggerAppExtension
 {

@@ -1,11 +1,6 @@
 namespace RecipeManagement.Extensions.Services;
 
-using AutoMapper;
-using FluentValidation.AspNetCore;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
 
 public static class ApiVersioningServiceExtension
 {

@@ -1,8 +1,8 @@
+using RecipeManagement.Contracts.Recipes;
+
 namespace RecipeManagement.IntegrationTests.FeatureTests.Recipes;
 
-using RecipeManagement.Domain.Recipes.Dtos;
 using RecipeManagement.SharedTestHelpers.Fakes.Recipe;
-using SharedKernel.Exceptions;
 using RecipeManagement.Domain.Recipes.Features;
 using FluentAssertions;
 using NUnit.Framework;

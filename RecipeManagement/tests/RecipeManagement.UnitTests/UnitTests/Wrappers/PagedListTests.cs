@@ -1,6 +1,7 @@
+using RecipeManagement.Wrappers.Extensions;
+
 namespace RecipeManagement.UnitTests.UnitTests.Wrappers;
 
-using RecipeManagement.Wrappers;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -14,7 +15,7 @@ public class PagedListTests
         var pageSize = 2;
         var source = new List<int>() { 1, 2, 3, 4, 5 }.AsQueryable();
 
-        var list = PagedList<int>.Create(source, pageNumber, pageSize);
+        var list = source.ToPagedList(pageNumber, pageSize);
         list.TotalCount.Should().Be(5);
         list.PageSize.Should().Be(2);
         list.PageNumber.Should().Be(2);
@@ -31,7 +32,7 @@ public class PagedListTests
         var pageSize = 2;
         var source = new List<int>() { 1, 2, 3, 4, 5 }.AsQueryable();
 
-        var list = PagedList<int>.Create(source, pageNumber, pageSize);
+        var list = source.ToPagedList(pageNumber, pageSize);
         list.TotalCount.Should().Be(5);
         list.PageSize.Should().Be(2);
         list.PageNumber.Should().Be(3);

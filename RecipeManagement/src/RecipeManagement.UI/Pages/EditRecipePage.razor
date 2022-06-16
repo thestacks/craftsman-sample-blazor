@@ -1,0 +1,15 @@
+﻿@attribute [Route(FrontendRoutes.Recipes.Edit)]
+
+<PageTitle>Edit recipe</PageTitle>
+
+<RadzenCard>
+    <NavigateButton Path="@FrontendRoutes.Recipes.Index"/>
+    <h3>Edit recipe</h3>
+    <RecipeForm ItemToEdit="@Id"/>
+</RadzenCard>
+
+@code
+{
+    [Parameter]
+    public string Id { get; set; }
+}

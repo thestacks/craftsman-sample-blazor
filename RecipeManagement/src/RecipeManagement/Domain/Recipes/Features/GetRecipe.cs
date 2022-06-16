@@ -1,6 +1,7 @@
+using RecipeManagement.Contracts.Recipes;
+
 namespace RecipeManagement.Domain.Recipes.Features;
 
-using RecipeManagement.Domain.Recipes.Dtos;
 using RecipeManagement.Domain.Recipes.Services;
 using AutoMapper;
 using MediatR;

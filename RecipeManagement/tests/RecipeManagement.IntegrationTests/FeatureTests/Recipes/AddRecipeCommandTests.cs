@@ -1,14 +1,12 @@
 namespace RecipeManagement.IntegrationTests.FeatureTests.Recipes;
 
 using RecipeManagement.SharedTestHelpers.Fakes.Recipe;
-using RecipeManagement.IntegrationTests.TestUtilities;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System.Threading.Tasks;
 using RecipeManagement.Domain.Recipes.Features;
 using static TestFixture;
-using SharedKernel.Exceptions;
 
 public class AddRecipeCommandTests : TestBase
 {

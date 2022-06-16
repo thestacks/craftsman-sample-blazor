@@ -1,0 +1,15 @@
+﻿@attribute [Route(FrontendRoutes.Ingredients.Edit)]
+
+<PageTitle>Edit ingredient</PageTitle>
+
+<RadzenCard>
+    <NavigateButton Path="@FrontendRoutes.Ingredients.Index"/>
+    <h3>Edit ingredient</h3>
+    <IngredientForm ItemToEdit="@Id"/>
+</RadzenCard>
+
+@code
+{
+    [Parameter]
+    public string Id { get; set; }
+}

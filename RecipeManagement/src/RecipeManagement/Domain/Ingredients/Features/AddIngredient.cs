@@ -1,8 +1,9 @@
+using RecipeManagement.Contracts.Ingredients;
+
 namespace RecipeManagement.Domain.Ingredients.Features;
 
 using RecipeManagement.Domain.Ingredients.Services;
 using RecipeManagement.Domain.Ingredients;
-using RecipeManagement.Domain.Ingredients.Dtos;
 using RecipeManagement.Services;
 using AutoMapper;
 using MediatR;

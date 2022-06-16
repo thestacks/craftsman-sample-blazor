@@ -1,7 +1,6 @@
 namespace RecipeManagement.IntegrationTests.FeatureTests.Recipes;
 
 using RecipeManagement.SharedTestHelpers.Fakes.Recipe;
-using RecipeManagement.IntegrationTests.TestUtilities;
 using RecipeManagement.Domain.Recipes.Features;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;

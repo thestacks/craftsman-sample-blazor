@@ -1,10 +1,8 @@
 namespace RecipeManagement.IntegrationTests.FeatureTests.Ingredients;
 
 using RecipeManagement.SharedTestHelpers.Fakes.Ingredient;
-using RecipeManagement.IntegrationTests.TestUtilities;
 using RecipeManagement.Domain.Ingredients.Features;
 using FluentAssertions;
-using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using SharedKernel.Exceptions;
 using System.Threading.Tasks;

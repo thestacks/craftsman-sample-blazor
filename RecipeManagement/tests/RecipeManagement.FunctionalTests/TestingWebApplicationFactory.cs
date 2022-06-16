@@ -3,10 +3,8 @@ namespace RecipeManagement.FunctionalTests;
 
 using RecipeManagement.Databases;
 using RecipeManagement.Resources;
-using RecipeManagement;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 

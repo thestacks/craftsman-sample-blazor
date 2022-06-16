@@ -1,19 +1,16 @@
+using RecipeManagement.Contracts.Ingredients;
+using RecipeManagement.Contracts.Routing;
+
 namespace RecipeManagement.Controllers.v1;
 
 using RecipeManagement.Domain.Ingredients.Features;
-using RecipeManagement.Domain.Ingredients.Dtos;
-using RecipeManagement.Wrappers;
 using System.Text.Json;
-using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Threading.Tasks;
-using System.Threading;
 using MediatR;
 
 [ApiController]
-[Route("api/ingredients")]
+[Route(BackendRoutes.Ingredients)]
 [ApiVersion("1.0")]
 public class IngredientsController: ControllerBase
 {
