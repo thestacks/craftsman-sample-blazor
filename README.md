@@ -21,6 +21,7 @@ For now, there are no tests, as this is rather PoC.
 ![Recipes (no sidebar)](/Screenshots/desktop-recipes-no-sidebar.png?raw=true "Recipes (no sidebar)")
 ![New recipe (empty)](/Screenshots/desktop-new-recipe-empty.png?raw=true "New recipe (empty)")
 ![New recipe (validation)](/Screenshots/desktop-recipe-validation.png?raw=true "New recipe (validation)")
+![Recipes (delete)](/Screenshots/desktop-recipe-delete-confirmation.png?raw=true "Recipes (delete)")
 ![Recipes (mobile)](/Screenshots/mobile-recipes.png?raw=true "Recipes (mobile)")
 ![Edit recipe (mobile)](/Screenshots/mobile-edit-recipe.png?raw=true "Edit recipe (mobile)")
 
